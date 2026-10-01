@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Sergio Ucedo · Desarrollador Python</title>
+    <meta name="description" content="Portafolio de Sergio Ucedo, desarrollador Python (Flask, SQL, JavaScript) y estudiante de 4º de Ingeniería Informática en la UNED. Proyectos y contacto."/>
+    <link rel="canonical" href="https://xerchion.github.io/portfolio-web/"/>
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"/>
+    <!-- Vista previa al compartir el enlace (LinkedIn, WhatsApp, etc.) -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="es_ES"/>
+    <meta property="og:url" content="https://xerchion.github.io/portfolio-web/"/>
+    <meta property="og:title" content="Sergio Ucedo · Desarrollador Python"/>
+    <meta property="og:description" content="Desarrollador Python (Flask, SQL, JavaScript) y estudiante de 4º de Ingeniería Informática en la UNED. Proyectos y contacto."/>
+    <meta property="og:image" content="https://xerchion.github.io/portfolio-web/assets/img/og.jpg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-gray-900 text-white">
+<div class="container mx-auto px-6 py-8">
+    <header class="flex justify-center items-center">
+        <nav id="mainNav" class="hidden md:flex items-center space-x-8">
+            <a class="text-rojo hover:text-white" href="#home">Inicio</a>
+            <a class="text-rojo hover:text-white" href="#about">Sobre mí</a>
+            <a class="text-rojo hover:text-white" href="#work">Proyectos</a>
+            <a class="text-rojo hover:text-white" href="#contacts">Contacto</a>
+        </nav>
+        <!-- Menú móvil -->
+        <button class="md:hidden" id="menuBtn" aria-label="Abrir menú">
+            <span class="material-icons">menu</span>
+        </button>
+        <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex-col items-center justify-center hidden">
+            <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl" aria-label="Cerrar menú"><span class="material-icons">close</span></button>
+            <nav class="flex flex-col space-y-8 items-center mt-24">
+                <a class="text-rojo text-2xl hover:text-white" href="#home">Inicio</a>
+                <a class="text-rojo text-2xl hover:text-white" href="#about">Sobre mí</a>
+                <a class="text-rojo text-2xl hover:text-white" href="#work">Proyectos</a>
+                <a class="text-rojo text-2xl hover:text-white" href="#contacts">Contacto</a>
+                <a href="#contacts" class="border border-rojo px-6 py-3 rounded-full text-lg btn-rojo hover:bg-opacity-80">Contáctame</a>
+            </nav>
+        </div>
+    </header>
+    <main class="mt-20" id="home">
+        <section class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2">
+                <p class="text-2xl md:text-3xl font-bold text-rojo">// Sergio Ucedo</p>
+                <h1 class="text-5xl md:text-6xl font-bold mt-4 leading-tight">Desarrollador Python</h1>
+                <p class="mt-6 text-gray-400 max-w-md">Estudiante de 4º de Ingeniería Informática en la UNED. Busco mi primer empleo como desarrollador junior.</p>
+                <div class="mt-12 flex flex-wrap gap-4 text-sm">
+                    <a class="border border-rojo text-rojo hover:text-white px-4 py-2 rounded-full" href="https://www.linkedin.com/in/sergio-ucedo" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a class="border border-rojo text-rojo hover:text-white px-4 py-2 rounded-full" href="https://github.com/xerchion" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a class="btn-rojo px-4 py-2 rounded-full" href="#contacts">Contacto</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+                <div class="w-80 h-80 rounded-full overflow-hidden">
+                    <img alt="Foto de Sergio Ucedo" class="w-full h-full object-cover" src="assets/img/foto.jpg" width="320" height="320"/>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-32" id="about">
+            <h2 class="text-4xl font-bold">Sobre mí</h2>
+            <div class="mt-8 text-gray-300 max-w-3xl mx-auto">
+                <p>
+                    Desde 2020 mantengo en producción una aplicación web que usan a diario <span class="text-white font-semibold">55 personas</span> en mi empresa. La diseñé y la programé yo mientras trabajaba como jefe de turno, y ahora quiero dedicarme a desarrollar software a tiempo completo.
+                </p>
+                <p class="mt-6">
+                    Curso 4º de Ingeniería Informática en la UNED (fin previsto en 2027) y busco mi primer puesto como desarrollador junior. Además de programar, llevo 12 años coordinando equipos en un entorno industrial con turnos rotativos: organizo el trabajo, resuelvo incidencias bajo presión y trato directamente con quien usa lo que desarrollo.
+                </p>
+                <p class="mt-6">
+                    Trabajo con <span class="text-rojo">Python</span>, <span class="text-rojo">Flask</span>, <span class="text-rojo">Django</span>, <span class="text-rojo">Java</span> y <span class="text-rojo">JavaScript</span>; con bases de datos <span class="text-rojo">PostgreSQL</span>, <span class="text-rojo">MySQL</span>, <span class="text-rojo">SQLite</span> y <span class="text-rojo">MongoDB</span>; y con <span class="text-rojo">APIs REST</span> y <span class="text-rojo">Git</span>.
+                </p>
+                <p class="mt-6">
+                    Disponible para trabajar en remoto o cambiar de residencia a cualquier punto de España.
+                </p>
+            </div>
+        </section>
+
+        <section class="mt-32" id="work">
+            <h2 class="text-4xl font-bold">Proyectos</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+
+                <article class="card rounded-lg p-6 flex flex-col">
+                    <img alt="Calendario anual de un turno generado por la aplicación" class="w-full h-40 object-cover object-top rounded-lg" src="assets/img/turnos.jpg" width="780" height="366" loading="lazy"/>
+                    <h3 class="mt-6 text-xl font-semibold text-rojo">Gestión de turnos</h3>
+                    <p class="text-xs text-gray-400 mt-1">Parque La Presa · 2020 – actualidad</p>
+                    <p class="mt-3 text-gray-300 flex-1">Aplicación web con la que la planta planifica sus turnos. La usan a diario 55 personas, centraliza los cambios de turno y las horas extra y genera automáticamente el calendario de cualquier grupo.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <a href="https://xerchion.github.io/5thTurno/" target="_blank" rel="noopener noreferrer" class="btn-rojo px-4 py-2 rounded-full text-sm text-center flex-1">Demo del calendario</a>
+                    </div>
+                </article>
+
+                <article class="card rounded-lg p-6 flex flex-col">
+                    <img alt="Ilustración: lista de convocatorias filtradas con un aviso" class="w-full h-40 object-cover rounded-lg" src="assets/img/opotrack.svg" width="800" height="400" loading="lazy"/>
+                    <h3 class="mt-6 text-xl font-semibold text-rojo">OpoTrack</h3>
+                    <p class="text-xs text-gray-400 mt-1">Proyecto personal · 2026 – actualidad</p>
+                    <p class="mt-3 text-gray-300 flex-1">Aplicación web que localiza convocatorias de oposiciones en boletines oficiales, las filtra y avisa por Telegram de las que encajan con los filtros del usuario.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQLite</span>
+                    </div>
+                    <!-- Cuando el repositorio sea público, sustituir este hueco por el botón "Código", como en las otras tarjetas -->
+                    <div class="hidden md:block mt-6 h-9" aria-hidden="true"></div>
+                </article>
+
+                <article class="card rounded-lg p-6 flex flex-col">
+                    <img alt="Ilustración: árbol de ramificación y poda con la mejor asignación resaltada" class="w-full h-40 object-cover rounded-lg" src="assets/img/asignacion.svg" width="800" height="400" loading="lazy"/>
+                    <h3 class="mt-6 text-xl font-semibold text-rojo">Asignación de tareas</h3>
+                    <p class="text-xs text-gray-400 mt-1">2025</p>
+                    <p class="mt-3 text-gray-300 flex-1">Resuelve el problema de asignación óptima de tareas con un algoritmo de ramificación y poda. Con tests unitarios y documentación técnica.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">Java</span>
+                        <span class="tag">JUnit</span>
+                        <span class="tag">Maven</span>
+                        <span class="tag">POO</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <a href="doc-algoritmo.html" class="btn-rojo px-4 py-2 rounded-full text-sm text-center flex-1">Documentación</a>
+                        <a href="https://github.com/xerchion/AT-RyP" target="_blank" rel="noopener noreferrer" class="border border-rojo text-rojo hover:text-white font-semibold px-4 py-2 rounded-full text-sm text-center flex-1">Código</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="mt-32" id="contacts">
+            <h2 class="text-4xl font-bold">Contacto</h2>
+            <div class="mt-8 text-gray-300">
+                <p>¿Tienes una vacante o alguna pregunta? Escríbeme y te respondo lo antes posible.</p>
+                <div class="mt-6 flex flex-wrap gap-4 items-center">
+                    <a href="mailto:xerchion@gmail.com" class="inline-block btn-rojo font-bold py-3 px-6 rounded-lg hover:bg-opacity-80 transition-colors">Envíame un correo</a>
+                    <a href="https://www.linkedin.com/in/sergio-ucedo" target="_blank" rel="noopener noreferrer" class="inline-block border border-rojo text-rojo hover:text-white font-bold py-3 px-6 rounded-lg">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="mt-24 pt-8 border-t border-gray-800 text-sm text-gray-500 text-center">
+        Sergio Ucedo · <a class="hover:text-white" href="mailto:xerchion@gmail.com">xerchion@gmail.com</a>
+    </footer>
+</div>
+<script src="assets/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="Lista de convocatorias filtradas con un aviso">
+  <rect width="800" height="400" fill="#111827"/>
+  <!-- Boletines -->
+  <g fill="#1e2636" stroke="#2b3549" stroke-width="2">
+    <rect x="60" y="92" width="150" height="196" rx="10"/>
+    <rect x="82" y="112" width="150" height="196" rx="10"/>
+  </g>
+  <g fill="#374151">
+    <rect x="102" y="136" width="70" height="12" rx="6" fill="#6b7280"/>
+    <rect x="102" y="166" width="110" height="8" rx="4"/>
+    <rect x="102" y="186" width="96" height="8" rx="4"/>
+    <rect x="102" y="206" width="110" height="8" rx="4"/>
+    <rect x="102" y="226" width="80" height="8" rx="4"/>
+    <rect x="102" y="246" width="104" height="8" rx="4"/>
+    <rect x="102" y="266" width="64" height="8" rx="4"/>
+  </g>
+  <!-- Filtro -->
+  <path d="M262 200 H318" stroke="#4b5563" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10"/>
+  <path d="M330 160 H410 L382 198 V240 L358 228 V198 Z" fill="none" stroke="#b23a48" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M422 200 H478" stroke="#4b5563" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10"/>
+  <!-- Convocatorias -->
+  <g>
+    <rect x="490" y="96" width="250" height="56" rx="10" fill="#1e2636" stroke="#2b3549" stroke-width="2"/>
+    <rect x="510" y="112" width="120" height="10" rx="5" fill="#6b7280"/>
+    <rect x="510" y="130" width="180" height="8" rx="4" fill="#374151"/>
+    <rect x="490" y="168" width="250" height="64" rx="10" fill="#1e2636" stroke="#b23a48" stroke-width="3"/>
+    <rect x="510" y="186" width="140" height="10" rx="5" fill="#ffffff"/>
+    <rect x="510" y="206" width="170" height="8" rx="4" fill="#9ca3af"/>
+    <rect x="490" y="248" width="250" height="56" rx="10" fill="#1e2636" stroke="#2b3549" stroke-width="2"/>
+    <rect x="510" y="264" width="100" height="10" rx="5" fill="#6b7280"/>
+    <rect x="510" y="282" width="160" height="8" rx="4" fill="#374151"/>
+  </g>
+  <!-- Aviso -->
+  <circle cx="740" cy="168" r="22" fill="#b23a48"/>
+  <path d="M740 157 a8 8 0 0 1 8 8 v6 l3 4 h-22 l3 -4 v-6 a8 8 0 0 1 8 -8 z M736.500 178 a3.500 3.500 0 0 0 7 0 z" fill="#ffffff"/>
+</svg>
