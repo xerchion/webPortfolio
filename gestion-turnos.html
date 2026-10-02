@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Gestión de turnos · Sergio Ucedo</title>
+    <meta name="description" content="Aplicación web de gestión de turnos que usan a diario 55 personas en una planta con cinco equipos en rotación 24/7, y cómo funciona su calendario público, 5thTurno."/>
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/styles.css?v=5" />
+</head>
+<body class="bg-gray-900 text-white">
+<div class="container mx-auto px-6 py-8">
+    <header class="flex justify-center items-center">
+        <nav id="mainNav" class="hidden md:flex items-center space-x-8">
+            <a class="text-rojo hover:text-white" href="index.html#home">Inicio</a>
+            <a class="text-rojo hover:text-white" href="index.html#about">Sobre mí</a>
+            <a class="text-rojo hover:text-white" href="index.html#work">Proyectos</a>
+            <a class="text-rojo hover:text-white" href="index.html#contacts">Contacto</a>
+        </nav>
+        <!-- Menú móvil -->
+        <button class="md:hidden" id="menuBtn" aria-label="Abrir menú">
+            <span class="material-icons">menu</span>
+        </button>
+        <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex-col items-center justify-center hidden">
+            <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl" aria-label="Cerrar menú"><span class="material-icons">close</span></button>
+            <nav class="flex flex-col space-y-8 items-center mt-24">
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#home">Inicio</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#about">Sobre mí</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#work">Proyectos</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#contacts">Contacto</a>
+                <a href="index.html#contacts" class="border border-rojo px-6 py-3 rounded-full text-lg btn-rojo hover:bg-opacity-80">Contáctame</a>
+            </nav>
+        </div>
+    </header>
+    <main class="mt-20">
+        <section class="mt-12">
+            <div class="bg-gray-800 rounded-lg p-8">
+                <h1 class="text-3xl font-bold text-rojo mb-6">Gestión de turnos</h1>
+                <p class="text-xl text-gray-300 mb-8">Aplicación web con la que una planta con turnos rotativos planifica el trabajo de sus equipos. La diseñé, la programé y la mantengo desde 2020. Aquí explico qué problema resuelve y cómo funciona su calendario, que es la parte pública.</p>
+
+                <!-- Botones de acción -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="index.html#work" class="bg-gray-700 hover:bg-gray-600 text-white px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center transition-colors w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">arrow_back</i>
+                        <span class="text-sm sm:text-base">Volver</span>
+                    </a>
+                    <a href="https://xerchion.github.io/5thTurno/" target="_blank" rel="noopener noreferrer" class="btn-rojo px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">event</i>
+                        <span class="text-sm sm:text-base">Demo del calendario</span>
+                    </a>
+                    <a href="https://github.com/xerchion/5thTurno" target="_blank" rel="noopener noreferrer" class="border border-rojo text-rojo hover:text-white px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">code</i>
+                        <span class="text-sm sm:text-base">Código</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El problema</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">La planta de Parque La Presa trabaja las 24 horas con <span class="text-rojo font-semibold">cinco equipos</span> que rotan entre mañana, tarde, noche y descanso. Cada persona necesita saber qué turno le toca cualquier día del año, y la empresa, quién está en cada turno.</p>
+                <p class="text-gray-300">Antes de la aplicación, los cambios de turno y las horas extra se llevaban de palabra, y los cuadrantes salían con errores.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">La aplicación</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Es una aplicación web interna que usan a diario <span class="text-rojo font-semibold">55 personas</span>. La desarrollé mientras trabajaba como jefe de turno en la misma planta, así que trato directamente con quienes la usan.</p>
+                <ul class="space-y-3 text-gray-300">
+                    <li><span class="text-rojo">•</span> <strong>Planificación:</strong> la planta planifica en ella sus turnos.</li>
+                    <li><span class="text-rojo">•</span> <strong>Cambios de turno y horas extra:</strong> quedan registrados en un solo sitio.</li>
+                    <li><span class="text-rojo">•</span> <strong>Calendario:</strong> genera automáticamente el calendario de trabajo de cualquier grupo.</li>
+                </ul>
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">SQL</span>
+                </div>
+                <p class="text-gray-300 mt-6">El código de la aplicación de la empresa no está publicado. Lo que sí es público es el calendario, <span class="text-rojo font-semibold">5thTurno</span>, y a él se dedica el resto de esta página.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El calendario: 5thTurno</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-6">Una página web para consultar qué turno le toca a cada uno de los cinco equipos, de la A a la E, en cualquier mes entre 2000 y 2099.</p>
+                <img alt="Calendario de diciembre de 2026 del turno C, con mañanas, tardes, noches, descansos y festivos" class="w-full max-w-3xl mx-auto rounded-lg" src="assets/img/5thturno-captura.jpg" width="1280" height="720" loading="lazy"/>
+                <ul class="space-y-3 text-gray-300 mt-6">
+                    <li><span class="text-rojo">•</span> Muestra el mes completo con un color por turno, y permite cambiar de equipo, de mes y de año.</li>
+                    <li><span class="text-rojo">•</span> Marca los festivos con un punto rojo sin tapar el turno: quien trabaja a turnos necesita saber qué le toca también en festivo.</li>
+                    <li><span class="text-rojo">•</span> Destaca el día de hoy y recuerda el equipo elegido entre visitas.</li>
+                    <li><span class="text-rojo">•</span> El mes entero cabe en la pantalla sin desplazarse, en móvil y en escritorio.</li>
+                    <li><span class="text-rojo">•</span> Todo se calcula en el navegador: no hay servidor, base de datos ni cuentas.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Cómo se calcula el turno</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-6">Los cinco equipos siguen el mismo ciclo de <span class="text-rojo font-semibold">35 días</span>: tres tandas de 7 días de trabajo, seguidas de 4, 5 y 5 días de descanso.</p>
+                <div class="bg-gray-900 rounded-lg p-4 space-y-3">
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs text-gray-400 w-14 flex-shrink-0">Tanda 1</span>
+                        <div class="flex flex-wrap gap-1" role="img" aria-label="Tanda 1: 2 de mañana, 2 de tarde, 3 de noche, 4 de descanso"><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-blue-500 text-white">M</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-blue-500 text-white">M</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-yellow-500 text-gray-900">T</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-yellow-500 text-gray-900">T</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-900 text-white border border-gray-600">N</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-900 text-white border border-gray-600">N</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-900 text-white border border-gray-600">N</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span></div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs text-gray-400 w-14 flex-shrink-0">Tanda 2</span>
+                        <div class="flex flex-wrap gap-1" role="img" aria-label="Tanda 2: 3 de mañana, 2 de tarde, 2 de noche, 5 de descanso"><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-blue-500 text-white">M</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-blue-500 text-white">M</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-blue-500 text-white">M</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-yellow-500 text-gray-900">T</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-yellow-500 text-gray-900">T</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-900 text-white border border-gray-600">N</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-900 text-white border border-gray-600">N</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span></div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs text-gray-400 w-14 flex-shrink-0">Tanda 3</span>
+                        <div class="flex flex-wrap gap-1" role="img" aria-label="Tanda 3: 2 de mañana, 3 de tarde, 2 de noche, 5 de descanso"><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-blue-500 text-white">M</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-blue-500 text-white">M</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-yellow-500 text-gray-900">T</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-yellow-500 text-gray-900">T</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-yellow-500 text-gray-900">T</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-900 text-white border border-gray-600">N</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-900 text-white border border-gray-600">N</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span><span class="w-5 h-5 sm:w-6 sm:h-6 text-xs font-semibold flex items-center justify-center rounded bg-gray-200 text-gray-900">D</span></div>
+                    </div>
+                    <p class="text-xs text-gray-400 pt-1">M mañana · T tarde · N noche · D descanso</p>
+                </div>
+                <p class="text-gray-300 mt-6 mb-4">Cada equipo va 7 días por detrás del anterior. Con ese desfase, cada día hay exactamente un equipo de mañana, uno de tarde, uno de noche y dos descansando. Y como 35 días son cinco semanas justas, cada tanda empieza siempre en el mismo día de la semana.</p>
+                <p class="text-gray-300 mb-4">El turno de un equipo en una fecha sale de una sola operación:</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>posición = DESFASE[equipo] + díasDesdeReferencia(fecha)
+turno    = CICLO[posición mod 35]</code></pre>
+                </div>
+                <p class="text-gray-300 mt-6 mb-4">La fecha de referencia es el 1 de enero de 2022, y el desfase de cada equipo es la posición del ciclo en la que estaba ese día. Para fechas anteriores la cuenta de días es negativa, así que el resto se calcula de forma que siempre quede entre 0 y 34.</p>
+                <div class="bg-gray-900 rounded-lg p-4">
+                    <p class="text-xs text-gray-400 mb-2">Ejemplo: equipo C, 12 de octubre de 2026</p>
+                    <ol class="space-y-2 text-sm text-gray-300">
+                        <li><span class="text-rojo font-semibold">1.</span> Del 1 de enero de 2022 al 12 de octubre de 2026 hay 1.745 días.</li>
+                        <li><span class="text-rojo font-semibold">2.</span> El desfase del equipo C es 12: la posición es 12 + 1.745 = 1.757.</li>
+                        <li><span class="text-rojo font-semibold">3.</span> 1.757 mod 35 = 7.</li>
+                        <li><span class="text-rojo font-semibold">4.</span> La posición 7 del ciclo es un descanso: el equipo C libra.</li>
+                    </ol>
+                </div>
+                <p class="text-gray-300 mt-6">No hace falta guardar ninguna tabla de turnos: la fórmula vale para cualquier fecha.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Festivos</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Los festivos no se escriben a mano cada año: se calculan con una regla.</p>
+                <ul class="space-y-3 text-gray-300">
+                    <li><span class="text-rojo">•</span> <strong>Nacionales y de Andalucía:</strong> diez de fecha fija, más Jueves y Viernes Santo. La fecha de la Pascua se obtiene con el algoritmo de Meeus, Jones y Butcher.</li>
+                    <li><span class="text-rojo">•</span> <strong>Traslados:</strong> los de fecha fija que caen en domingo pasan al lunes.</li>
+                    <li><span class="text-rojo">•</span> <strong>Locales de Loja:</strong> 25 de abril y 29 de agosto.</li>
+                </ul>
+                <p class="text-gray-300 mt-6">La regla reproduce los calendarios oficiales de Andalucía de 2026 y 2027. Como el calendario se aprueba cada año y puede apartarse de ella, hay dos tablas de excepciones para corregir un año concreto sin tocar el resto del código.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El código</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">HTML, CSS y JavaScript sin librerías ni proceso de compilación. La lógica está separada de la interfaz:</p>
+                <ul class="space-y-2 text-gray-300">
+                    <li><span class="text-rojo">•</span> <strong>turnos.js:</strong> qué turno tiene un equipo en una fecha. No toca la página.</li>
+                    <li><span class="text-rojo">•</span> <strong>festivos.js:</strong> qué días son festivos en un año. No toca la página.</li>
+                    <li><span class="text-rojo">•</span> <strong>app.js:</strong> estado, pintado del mes, navegación y preferencias.</li>
+                </ul>
+                <p class="text-gray-300 mt-6">Como los dos primeros no dependen del navegador, las pruebas ejecutan exactamente el mismo código que la página.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Pruebas</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Hay 19 pruebas automáticas, escritas con el ejecutor que incluye <span class="text-rojo font-semibold">Node.js</span>, sin dependencias. Comprueban, entre otras cosas:</p>
+                <ul class="space-y-3 text-gray-300">
+                    <li><span class="text-rojo">•</span> Que cada día de 2000 a 2099 hay un equipo en cada turno.</li>
+                    <li><span class="text-rojo">•</span> Que el ciclo se repite cada 35 días y continúa sin saltos antes de 2022.</li>
+                    <li><span class="text-rojo">•</span> Que los equipos van separados exactamente 7 días.</li>
+                    <li><span class="text-rojo">•</span> Que los festivos de Andalucía de 2026 y 2027 coinciden con los oficiales.</li>
+                </ul>
+                <p class="text-gray-300 mt-6">Se ejecutan también en GitHub Actions con cada cambio.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto mt-6">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>git clone https://github.com/xerchion/5thTurno.git
+cd 5thTurno
+npm test</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <div class="mt-12 text-center">
+            <a href="index.html#work" class="text-rojo hover:text-white">← Volver a los proyectos</a>
+        </div>
+    </main>
+</div>
+<script src="assets/scripts.js"></script>
+</body>
+</html>
