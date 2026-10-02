@@ -42,3 +42,36 @@ button:focus-visible {
     outline: 2px solid #fbeee6;
     outline-offset: 3px;
 }
+
+/* Etiqueta "En desarrollo" de las tarjetas */
+.badge-dev {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid #b23a48;
+    color: #fbeee6;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+.badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: #b23a48;
+    animation: badge-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .badge-dot { animation: none; }
+}
