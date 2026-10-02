@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>OpoTrack · Sergio Ucedo</title>
+    <meta name="description" content="OpoTrack: aplicación web local en Python y Flask que busca convocatorias de oposiciones en el BOE, el BOJA, los boletines provinciales andaluces y varios ayuntamientos, las filtra y avisa por Telegram."/>
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/styles.css?v=5" />
+</head>
+<body class="bg-gray-900 text-white">
+<div class="container mx-auto px-6 py-8">
+    <header class="flex justify-center items-center">
+        <nav id="mainNav" class="hidden md:flex items-center space-x-8">
+            <a class="text-rojo hover:text-white" href="index.html#home">Inicio</a>
+            <a class="text-rojo hover:text-white" href="index.html#about">Sobre mí</a>
+            <a class="text-rojo hover:text-white" href="index.html#work">Proyectos</a>
+            <a class="text-rojo hover:text-white" href="index.html#contacts">Contacto</a>
+        </nav>
+        <!-- Menú móvil -->
+        <button class="md:hidden" id="menuBtn" aria-label="Abrir menú">
+            <span class="material-icons">menu</span>
+        </button>
+        <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex-col items-center justify-center hidden">
+            <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl" aria-label="Cerrar menú"><span class="material-icons">close</span></button>
+            <nav class="flex flex-col space-y-8 items-center mt-24">
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#home">Inicio</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#about">Sobre mí</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#work">Proyectos</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#contacts">Contacto</a>
+                <a href="index.html#contacts" class="border border-rojo px-6 py-3 rounded-full text-lg btn-rojo hover:bg-opacity-80">Contáctame</a>
+            </nav>
+        </div>
+    </header>
+    <main class="mt-20">
+        <section class="mt-12">
+            <div class="bg-gray-800 rounded-lg p-8">
+                <div class="flex flex-wrap items-center gap-4 mb-6">
+                    <h1 class="text-3xl font-bold text-rojo">OpoTrack</h1>
+                    <span class="badge-dev"><span class="badge-dot" aria-hidden="true"></span>En desarrollo</span>
+                </div>
+                <p class="text-xl text-gray-300 mb-8">Aplicación web local para buscar y seguir convocatorias de oposiciones. Cada día recorre los boletines oficiales y las webs de varios ayuntamientos, filtra los anuncios con mis perfiles de búsqueda y deja lo que encaja en una bandeja.</p>
+
+                <!-- Botones de acción -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="index.html#work" class="bg-gray-700 hover:bg-gray-600 text-white px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center transition-colors w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">arrow_back</i>
+                        <span class="text-sm sm:text-base">Volver</span>
+                    </a>
+                    <a href="https://github.com/xerchion/OpoTrack" target="_blank" rel="noopener noreferrer" class="btn-rojo px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">code</i>
+                        <span class="text-sm sm:text-base">Código</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El problema</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Las convocatorias de empleo público se publican repartidas: unas en el BOE, otras en el boletín autonómico, otras en el de la provincia y otras solo en la web del ayuntamiento. Para no perderse ninguna hay que revisar cada día más de una docena de sitios.</p>
+                <p class="text-gray-300">OpoTrack hace esa revisión por mí. Consulta <span class="text-rojo font-semibold">15 fuentes</span>, se queda con los anuncios que encajan con lo que busco y me avisa.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Qué hace</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <img alt="Bandeja de novedades de OpoTrack, con las convocatorias encontradas y los botones Seguir, Asociar y Descartar" class="w-full max-w-3xl mx-auto rounded-lg" src="assets/img/opotrack-bandeja.jpg" width="1440" height="900" loading="lazy"/>
+                <ul class="space-y-3 text-gray-300 mt-6">
+                    <li><span class="text-rojo">•</span> <strong>Búsqueda en varias fuentes:</strong> por fecha, eligiendo qué boletines y ayuntamientos entran, con un resumen de lo leído en cada uno.</li>
+                    <li><span class="text-rojo">•</span> <strong>Bandeja de novedades:</strong> cada anuncio muestra la localidad, el puesto, el grupo y un nivel de confianza, extraídos del texto. Se puede seguir, asociar a una convocatoria que ya se sigue o descartar.</li>
+                    <li><span class="text-rojo">•</span> <strong>No coincidentes:</strong> lo que el filtro deja fuera no se pierde; se acumula para repasarlo, por si el filtro se ha dejado algo.</li>
+                    <li><span class="text-rojo">•</span> <strong>Seguimiento:</strong> cada convocatoria tiene su ficha, con publicaciones, temario, plazos, requisitos, leyes y documentos adjuntos.</li>
+                    <li><span class="text-rojo">•</span> <strong>Avisos por Telegram:</strong> un resumen diario, opcional, con las novedades.</li>
+                    <li><span class="text-rojo">•</span> <strong>Además:</strong> papelera reversible, panel con contadores y plazos próximos, y tema claro y oscuro.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Las fuentes</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Cada fuente publica de una forma distinta, así que cada una tiene su propio conector. Todos devuelven los anuncios en el mismo formato, y el resto de la aplicación no sabe de dónde viene cada uno.</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-gray-300">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="px-3 py-2 text-left font-semibold text-white border-b border-gray-600">Fuente</th>
+                                <th scope="col" class="px-3 py-2 text-left font-semibold text-white border-b border-gray-600">Cómo se lee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">Boletín Oficial del Estado</td><td class="px-3 py-2 align-top">API de datos abiertos</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">Boletín Oficial de la Junta de Andalucía</td><td class="px-3 py-2 align-top">Feed Atom de la sección de oposiciones</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">BOP de Granada, Sevilla, Córdoba y Jaén</td><td class="px-3 py-2 align-top">HTML del boletín del día</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">BOP de Málaga</td><td class="px-3 py-2 align-top">Sumario diario, con respaldo en datos abiertos o en un CSV local</td></tr>
+                            <tr><td class="px-3 py-2 align-top">Ayuntamientos de Antequera, Benalmádena, Córdoba, Huétor Tájar, Loja, Málaga, Motril y Nerja</td><td class="px-3 py-2 align-top">HTML de su página de empleo público</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <img alt="Resumen de una búsqueda: anuncios nuevos y leídos en cada boletín y en cada ayuntamiento" class="w-full max-w-3xl mx-auto rounded-lg mt-6" src="assets/img/opotrack-fuentes.jpg" width="1440" height="900" loading="lazy"/>
+                <p class="text-gray-300 mt-6">Añadir una fuente es escribir un conector nuevo, guardar una muestra de su página y añadir una prueba que la lea.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Cómo decide qué entra en la bandeja</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Los perfiles de búsqueda se editan desde la propia web, sin tocar código. Un anuncio entra en la bandeja si cumple las tres condiciones de algún perfil:</p>
+                <ul class="space-y-3 text-gray-300">
+                    <li><span class="text-rojo">•</span> <strong>Tema:</strong> contiene alguno de los términos temáticos del perfil, por ejemplo los de informática.</li>
+                    <li><span class="text-rojo">•</span> <strong>Ámbito:</strong> si el perfil exige una zona, aparece alguno de sus términos geográficos.</li>
+                    <li><span class="text-rojo">•</span> <strong>Exclusiones:</strong> no contiene ninguno de los términos excluidos.</li>
+                </ul>
+                <p class="text-gray-300 mt-6">Las comparaciones se hacen sin distinguir mayúsculas ni acentos. El filtro prefiere pasarse a quedarse corto: ante la duda, el anuncio entra y lo descarto yo. Lo descartado se recuerda, y lo ya visto no vuelve a aparecer.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El seguimiento</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-6">Cuando decido seguir una convocatoria, pasa a tener su propia ficha. Ahí se van asociando las publicaciones posteriores, y la aplicación calcula la fecha tope y los días hábiles que quedan.</p>
+                <img alt="Ficha de una convocatoria en seguimiento, con sus datos, la fecha tope y los días hábiles que quedan" class="w-full max-w-3xl mx-auto rounded-lg" src="assets/img/opotrack-ficha.jpg" width="1440" height="900" loading="lazy"/>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El código</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Unas 5.400 líneas de Python. Está pensada para un solo usuario, en su propio equipo, sin servicios externos obligatorios.</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">SQLAlchemy</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">BeautifulSoup</span>
+                    <span class="tag">pytest</span>
+                </div>
+                <ul class="space-y-2 text-gray-300">
+                    <li><span class="text-rojo">•</span> <strong>fuentes/:</strong> un conector por boletín o ayuntamiento, todos con la misma interfaz.</li>
+                    <li><span class="text-rojo">•</span> <strong>motor.py:</strong> búsqueda, filtrado por perfiles y deduplicación.</li>
+                    <li><span class="text-rojo">•</span> <strong>extraccion.py:</strong> saca del texto el puesto, la localidad, el grupo y el número de plazas.</li>
+                    <li><span class="text-rojo">•</span> <strong>models.py y db.py:</strong> modelo de datos con SQLAlchemy. El esquema se amplía solo al arrancar.</li>
+                    <li><span class="text-rojo">•</span> <strong>web/:</strong> rutas de Flask, plantillas y estilos.</li>
+                    <li><span class="text-rojo">•</span> <strong>notificaciones.py:</strong> mensajes y envío por Telegram.</li>
+                    <li><span class="text-rojo">•</span> <strong>cli.py:</strong> la misma búsqueda desde la línea de comandos, que es lo que ejecuta la tarea programada del aviso diario.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Pruebas</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Casi un centenar de pruebas con <span class="text-rojo font-semibold">pytest</span>. No usan la red ni la base de datos real: cada conector se prueba contra una muestra guardada de su fuente, y el resto, contra una base de datos temporal.</p>
+                <p class="text-gray-300">Las muestras son páginas reales de cada boletín y de cada ayuntamiento, guardadas en el repositorio.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Cómo ejecutarlo</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Hace falta Python 3.10 o superior.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>git clone https://github.com/xerchion/OpoTrack.git
+cd OpoTrack
+pip install -r requirements.txt
+python cli.py seed        # crea la base de datos y carga fuentes y perfiles
+python run_web.py         # http://127.0.0.1:5000</code></pre>
+                </div>
+                <p class="text-gray-300 mt-6">En Windows basta con hacer doble clic en <code class="font-mono text-sm">OpoTrack.bat</code>.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Límites</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <ul class="space-y-3 text-gray-300">
+                    <li><span class="text-rojo">•</span> Es una aplicación local y no tiene inicio de sesión: el servidor solo escucha en el propio equipo y no está pensada para exponerse a internet.</li>
+                    <li><span class="text-rojo">•</span> Varias fuentes se leen del HTML público de cada sitio. Si una web cambia su estructura, su conector deja de funcionar hasta que se adapta.</li>
+                    <li><span class="text-rojo">•</span> No es un servicio oficial ni sustituye a la consulta de los boletines: los plazos y las bases hay que comprobarlos siempre en la fuente original.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="mt-12 text-center">
+            <a href="index.html#work" class="text-rojo hover:text-white">← Volver a los proyectos</a>
+        </div>
+    </main>
+</div>
+<script src="assets/scripts.js"></script>
+</body>
+</html>
