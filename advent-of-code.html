@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Advent of Code 2025 · Soluciones en Python · Sergio Ucedo</title>
+    <meta name="description" content="Soluciones en Python a los 12 retos de Advent of Code 2025: qué técnica usa cada una y cuatro de ellas explicadas con más detalle."/>
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-gray-900 text-white">
+<div class="container mx-auto px-6 py-8">
+    <header class="flex justify-center items-center">
+        <nav id="mainNav" class="hidden md:flex items-center space-x-8">
+            <a class="text-rojo hover:text-white" href="index.html#home">Inicio</a>
+            <a class="text-rojo hover:text-white" href="index.html#about">Sobre mí</a>
+            <a class="text-rojo hover:text-white" href="index.html#work">Proyectos</a>
+            <a class="text-rojo hover:text-white" href="index.html#contacts">Contacto</a>
+        </nav>
+        <!-- Menú móvil -->
+        <button class="md:hidden" id="menuBtn" aria-label="Abrir menú">
+            <span class="material-icons">menu</span>
+        </button>
+        <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex-col items-center justify-center hidden">
+            <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl" aria-label="Cerrar menú"><span class="material-icons">close</span></button>
+            <nav class="flex flex-col space-y-8 items-center mt-24">
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#home">Inicio</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#about">Sobre mí</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#work">Proyectos</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#contacts">Contacto</a>
+                <a href="index.html#contacts" class="border border-rojo px-6 py-3 rounded-full text-lg btn-rojo hover:bg-opacity-80">Contáctame</a>
+            </nav>
+        </div>
+    </header>
+    <main class="mt-20">
+        <section class="mt-12">
+            <div class="bg-gray-800 rounded-lg p-8">
+                <h1 class="text-3xl font-bold text-rojo mb-6">Advent of Code 2025</h1>
+                <p class="text-xl text-gray-300 mb-8">Soluciones en Python a los 12 retos de Advent of Code 2025. Aquí explico qué es, qué técnica usa cada solución y cuatro de ellas con más detalle.</p>
+
+                <!-- Botones de acción -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="algoritmia.html" class="bg-gray-700 hover:bg-gray-600 text-white px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center transition-colors w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">arrow_back</i>
+                        <span class="text-sm sm:text-base">Volver</span>
+                    </a>
+                    <a href="https://github.com/xerchion/AdventurOfCode" target="_blank" rel="noopener noreferrer" class="btn-rojo px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">code</i>
+                        <span class="text-sm sm:text-base">Código</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Qué es</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025" target="_blank" rel="noopener noreferrer">Advent of Code</a> es un calendario de retos de programación que se publica cada diciembre. La edición de 2025 tiene <span class="text-rojo font-semibold">12 días</span>, y cada día plantea un problema con dos partes: la segunda cambia las condiciones de la primera y a menudo obliga a buscar otra técnica. El día 12 solo tiene una parte.</p>
+                <p class="text-gray-300">Cada parte está resuelta en un script independiente que solo usa la biblioteca estándar de Python. En total son <span class="text-rojo font-semibold">23 scripts</span> y unas 2.200 líneas.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Los 12 retos</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">La técnica que usa cada solución. El nombre de cada reto enlaza a su enunciado.</p>
+                <div class="overflow-x-auto">
+                    <table class="tabla-retos text-sm text-gray-300">
+                        <thead>
+                            <tr>
+                                <th scope="col">Día</th>
+                                <th scope="col">Reto</th>
+                                <th scope="col">Parte 1</th>
+                                <th scope="col">Parte 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td><a href="https://adventofcode.com/2025/day/1" target="_blank" rel="noopener noreferrer">Secret Entrance</a></td><td>Aritmética modular</td><td>División entera para contar los pasos por cero</td></tr>
+                            <tr><td>2</td><td><a href="https://adventofcode.com/2025/day/2" target="_blank" rel="noopener noreferrer">Gift Shop</a></td><td>Comparación de las dos mitades de un número</td><td>Búsqueda de un patrón repetido en la cadena</td></tr>
+                            <tr><td>3</td><td><a href="https://adventofcode.com/2025/day/3" target="_blank" rel="noopener noreferrer">Lobby</a></td><td>El mayor dígito y el mayor de los que le siguen</td><td>Selección voraz con una pila</td></tr>
+                            <tr><td>4</td><td><a href="https://adventofcode.com/2025/day/4" target="_blank" rel="noopener noreferrer">Printing Department</a></td><td>Rejilla y recuento de los 8 vecinos</td><td>Simulación por rondas hasta que no hay cambios</td></tr>
+                            <tr><td>5</td><td><a href="https://adventofcode.com/2025/day/5" target="_blank" rel="noopener noreferrer">Cafeteria</a></td><td>Pertenencia a rangos</td><td>Ordenación y fusión de intervalos</td></tr>
+                            <tr><td>6</td><td><a href="https://adventofcode.com/2025/day/6" target="_blank" rel="noopener noreferrer">Trash Compactor</a></td><td>Operaciones por columnas</td><td>Lectura de la hoja en vertical, de derecha a izquierda</td></tr>
+                            <tr><td>7</td><td><a href="https://adventofcode.com/2025/day/7" target="_blank" rel="noopener noreferrer">Laboratories</a></td><td>Simulación fila a fila con conjuntos</td><td>Recuento de caminos acumulando por columna</td></tr>
+                            <tr><td>8</td><td><a href="https://adventofcode.com/2025/day/8" target="_blank" rel="noopener noreferrer">Playground</a></td><td>Union-Find sobre los pares más cercanos</td><td>Union-Find hasta que queda un solo grupo</td></tr>
+                            <tr><td>9</td><td><a href="https://adventofcode.com/2025/day/9" target="_blank" rel="noopener noreferrer">Movie Theater</a></td><td>Fuerza bruta sobre pares de puntos</td><td>Segmentos del polígono y trazado de rayos</td></tr>
+                            <tr><td>10</td><td><a href="https://adventofcode.com/2025/day/10" target="_blank" rel="noopener noreferrer">Factory</a></td><td>Fuerza bruta sobre combinaciones de botones</td><td>Eliminación de Gauss-Jordan y búsqueda sobre las variables libres</td></tr>
+                            <tr><td>11</td><td><a href="https://adventofcode.com/2025/day/11" target="_blank" rel="noopener noreferrer">Reactor</a></td><td>Búsqueda en profundidad con memoria</td><td>Producto de los caminos de cada tramo</td></tr>
+                            <tr><td>12</td><td><a href="https://adventofcode.com/2025/day/12" target="_blank" rel="noopener noreferrer">Christmas Tree Farm</a></td><td>Vuelta atrás con rotaciones y simetrías</td><td>—</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Cuatro soluciones, con más detalle</h2>
+
+            <div class="bg-gray-800 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-rojo mb-1">Día 3, parte 2 · Selección voraz con una pila</h3>
+                <p class="text-xs text-gray-400 mb-4">dia03/parte2.py</p>
+                <p class="text-gray-300 mb-4">De cada fila de dígitos hay que quedarse con 12, sin cambiar su orden, de forma que el número resultante sea el mayor posible. Probar todas las formas de elegirlos no es viable.</p>
+                <p class="text-gray-300 mb-4">La solución recorre la fila una sola vez con una pila. Mientras queden dígitos que se puedan descartar y el dígito nuevo sea mayor que el de la cima, saca la cima: un dígito grande siempre vale más cuanto más a la izquierda queda. Al terminar se queda con los 12 primeros de la pila.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>vidas_para_borrar = len(linea) - longitud_objetivo
+pila = []
+
+for digito in linea:
+    while vidas_para_borrar &gt; 0 and pila and pila[-1] &lt; digito:
+        pila.pop()
+        vidas_para_borrar -= 1
+    pila.append(digito)
+
+pila_final = pila[:longitud_objetivo]</code></pre>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 rounded-lg p-6 mt-8">
+                <h3 class="text-xl font-semibold text-rojo mb-1">Día 8 · Union-Find</h3>
+                <p class="text-xs text-gray-400 mb-4">dia08/parte1.py · dia08/parte2.py</p>
+                <p class="text-gray-300 mb-4">La entrada es una lista de puntos en tres dimensiones. Se calcula la distancia entre todos los pares, se ordenan de menor a mayor y se van uniendo los puntos más cercanos en grupos. La parte 1 pide el producto de los tamaños de los tres grupos mayores tras las 1.000 uniones más cortas; la parte 2, seguir uniendo hasta que queda un solo grupo.</p>
+                <p class="text-gray-300 mb-4">Para saber en cada paso a qué grupo pertenece un punto se usa una estructura Union-Find con compresión de ruta y unión por tamaño. Las distancias se comparan al cuadrado, sin calcular raíces.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>def find(self, i):
+    if self.parent[i] != i:
+        self.parent[i] = self.find(self.parent[i])  # Compresión de ruta
+    return self.parent[i]
+
+def union(self, i, j):
+    root_i = self.find(i)
+    root_j = self.find(j)
+
+    if root_i != root_j:
+        # Unimos el grupo más pequeño al más grande
+        if self.size[root_i] &lt; self.size[root_j]:
+            root_i, root_j = root_j, root_i
+        self.parent[root_j] = root_i
+        self.size[root_i] += self.size[root_j]
+        return True
+    return False</code></pre>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 rounded-lg p-6 mt-8">
+                <h3 class="text-xl font-semibold text-rojo mb-1">Día 10, parte 2 · Eliminación de Gauss-Jordan</h3>
+                <p class="text-xs text-gray-400 mb-4">dia10/parte2.py</p>
+                <p class="text-gray-300 mb-4">Cada máquina tiene varios contadores y varios botones; cada botón suma uno a unos contadores concretos. Hay que encontrar el menor número de pulsaciones que deja todos los contadores en su valor objetivo. En la parte 1, con luces que se encienden y se apagan, bastaba con probar combinaciones de botones; con contadores, cada botón puede pulsarse muchas veces.</p>
+                <p class="text-gray-300 mb-4">El problema se plantea como un sistema de ecuaciones lineales: una ecuación por contador y una incógnita por botón, que es el número de veces que se pulsa.</p>
+                <ul class="space-y-3 text-gray-300">
+                    <li><span class="text-rojo">•</span> <strong>Reducción:</strong> la eliminación de Gauss-Jordan deja cada incógnita con pivote expresada en función de las que no lo tienen, las variables libres.</li>
+                    <li><span class="text-rojo">•</span> <strong>Búsqueda:</strong> se prueban valores para las variables libres en orden creciente de su suma. Para cada combinación se calcula el resto de las incógnitas, y solo vale si todas son enteras y no negativas.</li>
+                    <li><span class="text-rojo">•</span> <strong>Poda:</strong> una combinación deja de ampliarse cuando la suma de sus variables libres ya alcanza el mejor total encontrado.</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-800 rounded-lg p-6 mt-8">
+                <h3 class="text-xl font-semibold text-rojo mb-1">Día 11, parte 2 · Caminos en un grafo dirigido</h3>
+                <p class="text-xs text-gray-400 mb-4">dia11/parte2.py</p>
+                <p class="text-gray-300 mb-4">Hay que contar los caminos entre dos nodos de un grafo dirigido que pasan por otros dos nodos obligatorios. Enumerarlos uno a uno no escala.</p>
+                <p class="text-gray-300 mb-4">Los caminos entre dos nodos se cuentan con una búsqueda en profundidad que recuerda el resultado de cada nodo, de modo que cada uno se calcula una sola vez. Para obligar a pasar por los dos nodos intermedios, el recorrido se parte en tres tramos y se multiplican los caminos de cada tramo. Como los nodos obligatorios pueden visitarse en dos órdenes, se suman las dos opciones.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code># Opción A: svr -&gt; dac -&gt; fft -&gt; out
+total_A = contar_entre("svr", "dac") * contar_entre("dac", "fft") * contar_entre("fft", "out")
+
+# Opción B: svr -&gt; fft -&gt; dac -&gt; out
+total_B = contar_entre("svr", "fft") * contar_entre("fft", "dac") * contar_entre("dac", "out")
+
+total_final = total_A + total_B</code></pre>
+                </div>
+                <p class="text-xs text-gray-400 mt-3">Fragmento resumido: en el script, cada tramo se guarda antes en su propia variable.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Cómo ejecutarlo</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Hace falta Python 3.10 o superior. Las entradas no están en el repositorio, porque Advent of Code pide no redistribuirlas: cada uno descarga la suya desde la página del reto y la guarda como <code class="font-mono text-sm">entrada.txt</code> en la carpeta del día.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>python dia01/parte1.py                # lee dia01/entrada.txt
+python dia01/parte1.py otro.txt       # o el fichero que le indiques</code></pre>
+                </div>
+                <p class="text-gray-300 mt-6">Todas terminan en pocos segundos, salvo el día 12, que tarda alrededor de un minuto.</p>
+            </div>
+        </section>
+
+        <div class="mt-12 text-center">
+            <a href="algoritmia.html" class="text-rojo hover:text-white">← Volver a Algoritmia</a>
+        </div>
+    </main>
+</div>
+<script src="assets/scripts.js"></script>
+</body>
+</html>

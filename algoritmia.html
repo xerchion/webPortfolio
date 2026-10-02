@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Algoritmia · Proyectos · Sergio Ucedo</title>
+    <meta name="description" content="Proyectos de algoritmos y estructuras de datos de Sergio Ucedo: asignación de tareas por ramificación y poda en Java y los 12 retos de Advent of Code 2025 en Python."/>
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"/>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="bg-gray-900 text-white">
+<div class="container mx-auto px-6 py-8">
+    <header class="flex justify-center items-center">
+        <nav id="mainNav" class="hidden md:flex items-center space-x-8">
+            <a class="text-rojo hover:text-white" href="index.html#home">Inicio</a>
+            <a class="text-rojo hover:text-white" href="index.html#about">Sobre mí</a>
+            <a class="text-rojo hover:text-white" href="index.html#work">Proyectos</a>
+            <a class="text-rojo hover:text-white" href="index.html#contacts">Contacto</a>
+        </nav>
+        <!-- Menú móvil -->
+        <button class="md:hidden" id="menuBtn" aria-label="Abrir menú">
+            <span class="material-icons">menu</span>
+        </button>
+        <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex-col items-center justify-center hidden">
+            <button id="closeMenu" class="absolute top-6 right-6 text-white text-3xl" aria-label="Cerrar menú"><span class="material-icons">close</span></button>
+            <nav class="flex flex-col space-y-8 items-center mt-24">
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#home">Inicio</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#about">Sobre mí</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#work">Proyectos</a>
+                <a class="text-rojo text-2xl hover:text-white" href="index.html#contacts">Contacto</a>
+                <a href="index.html#contacts" class="border border-rojo px-6 py-3 rounded-full text-lg btn-rojo hover:bg-opacity-80">Contáctame</a>
+            </nav>
+        </div>
+    </header>
+    <main class="mt-20">
+        <section>
+            <p class="text-2xl md:text-3xl font-bold text-rojo">// Proyectos</p>
+            <h1 class="text-4xl md:text-5xl font-bold mt-4 leading-tight">Algoritmia</h1>
+            <p class="mt-6 text-gray-400 max-w-2xl">Proyectos centrados en algoritmos y estructuras de datos. Cada uno tiene una página que explica el problema, la técnica empleada y cómo ejecutarlo.</p>
+        </section>
+
+        <section class="mt-12">
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
+
+                <article class="card rounded-lg p-6 flex flex-col">
+                    <img alt="Ilustración: árbol de ramificación y poda con la mejor asignación resaltada" class="w-full h-40 lg:h-48 object-cover rounded-lg" src="assets/img/asignacion.svg" width="800" height="400"/>
+                    <h2 class="mt-6 text-xl font-semibold text-rojo">Asignación de tareas</h2>
+                    <p class="text-xs text-gray-400 mt-1">2025</p>
+                    <p class="mt-3 text-gray-300 flex-1">Programa en Java que reparte <em>n</em> tareas entre <em>n</em> agentes con el menor coste total, mediante ramificación y poda. Las pruebas comparan cada resultado con una búsqueda por fuerza bruta.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">Java</span>
+                        <span class="tag">JUnit</span>
+                        <span class="tag">Maven</span>
+                        <span class="tag">POO</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <a href="doc-algoritmo.html" class="btn-rojo px-4 py-2 rounded-full text-sm text-center flex-1">Documentación</a>
+                        <a href="https://github.com/xerchion/AsignacionTareas" target="_blank" rel="noopener noreferrer" class="border border-rojo text-rojo hover:text-white font-semibold px-4 py-2 rounded-full text-sm text-center flex-1">Código</a>
+                    </div>
+                </article>
+
+                <article class="card rounded-lg p-6 flex flex-col">
+                    <img alt="Ilustración: calendario de doce días, cada uno con sus estrellas" class="w-full h-40 lg:h-48 object-cover rounded-lg" src="assets/img/adventofcode.svg" width="800" height="400"/>
+                    <h2 class="mt-6 text-xl font-semibold text-rojo">Advent of Code 2025</h2>
+                    <p class="text-xs text-gray-400 mt-1">2025</p>
+                    <p class="mt-3 text-gray-300 flex-1">Soluciones en Python a los 12 retos de Advent of Code 2025, solo con la biblioteca estándar: grafos, Union-Find, fusión de intervalos, eliminación de Gauss-Jordan y vuelta atrás.</p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <span class="tag">Python</span>
+                        <span class="tag">Grafos</span>
+                        <span class="tag">Union-Find</span>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <a href="advent-of-code.html" class="btn-rojo px-4 py-2 rounded-full text-sm text-center flex-1">Documentación</a>
+                        <a href="https://github.com/xerchion/AdventurOfCode" target="_blank" rel="noopener noreferrer" class="border border-rojo text-rojo hover:text-white font-semibold px-4 py-2 rounded-full text-sm text-center flex-1">Código</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <div class="mt-12">
+            <a href="index.html#work" class="text-rojo hover:text-white">← Volver a los proyectos</a>
+        </div>
+    </main>
+    <footer class="mt-24 pt-8 border-t border-gray-800 text-sm text-gray-500 text-center">
+        Sergio Ucedo · <a class="hover:text-white" href="mailto:xerchion@gmail.com">xerchion@gmail.com</a>
+    </footer>
+</div>
+<script src="assets/scripts.js"></script>
+</body>
+</html>
