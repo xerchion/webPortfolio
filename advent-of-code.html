@@ -6,14 +6,26 @@
     <title>Advent of Code 2025 · Soluciones en Python · Sergio Ucedo</title>
     <meta name="description" content="Soluciones en Python a los 12 retos de Advent of Code 2025: qué técnica usa cada una y cuatro de ellas explicadas con más detalle."/>
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"/>
+    <script>
+        // Aplica el tema guardado antes de pintar la página (oscuro por defecto)
+        (function () {
+            var tema = 'dark';
+            try { if (localStorage.getItem('portfolio.tema') === 'light') tema = 'light'; } catch (e) {}
+            document.documentElement.setAttribute('data-theme', tema);
+        })();
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/styles.css?v=5" />
+    <link rel="stylesheet" href="assets/styles.css?v=6" />
 </head>
 <body class="bg-gray-900 text-white">
 <div class="container mx-auto px-6 py-8">
-    <header class="flex justify-center items-center">
+    <header class="relative flex justify-center items-center">
+        <button id="themeToggle" type="button" class="theme-toggle" aria-label="Cambiar a modo claro" title="Cambiar a modo claro">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <nav id="mainNav" class="hidden md:flex items-center space-x-8">
             <a class="text-rojo hover:text-white" href="index.html#home">Inicio</a>
             <a class="text-rojo hover:text-white" href="index.html#about">Sobre mí</a>
@@ -197,6 +209,6 @@ python dia01/parte1.py otro.txt       # o el fichero que le indiques</code></pre
         </div>
     </main>
 </div>
-<script src="assets/scripts.js"></script>
+<script src="assets/scripts.js?v=6"></script>
 </body>
 </html>

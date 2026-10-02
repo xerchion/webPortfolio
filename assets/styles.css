@@ -75,3 +75,88 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
     .badge-dot { animation: none; }
 }
+
+/* ---------- Selector de tema claro/oscuro ---------- */
+html[data-theme="dark"] { color-scheme: dark; }
+html[data-theme="light"] { color-scheme: light; }
+
+.theme-toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid #2b3549;
+    background-color: #1e2636;
+    color: #fbeee6;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    border-color: #b23a48;
+}
+
+.theme-toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* En oscuro se muestra el sol (pasar a claro); en claro, la luna */
+.theme-toggle .icon-moon { display: none; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+/* ---------- Tema claro ----------
+   La página está escrita con las clases oscuras de Tailwind; aquí se
+   sustituyen sus colores cuando <html> lleva data-theme="light".
+   Los cuadros de turno (.chip) conservan sus colores en los dos temas. */
+html[data-theme="light"] .text-white:not(.chip):not(.btn-rojo) { color: #111827; }
+html[data-theme="light"] .text-gray-300 { color: #374151; }
+html[data-theme="light"] .text-gray-400,
+html[data-theme="light"] .text-gray-500 { color: #6b7280; }
+
+html[data-theme="light"] .bg-gray-800 {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px #e7e1d9;
+}
+html[data-theme="light"] .bg-gray-900:not(.chip) { background-color: #f3efea; }
+html[data-theme="light"] body.bg-gray-900.text-white {
+    background-color: #f7f4f0;
+    color: #1f2937;
+}
+html[data-theme="light"] #mobileMenu { background-color: rgba(247, 244, 240, 0.97); }
+html[data-theme="light"] .bg-gray-700 { background-color: #e5e7eb; }
+html[data-theme="light"] .hover\:bg-gray-600:hover { background-color: #d1d5db; }
+
+html[data-theme="light"] .border-gray-800,
+html[data-theme="light"] .border-gray-700 { border-color: #e7e1d9; }
+html[data-theme="light"] .border-gray-600:not(.chip) { border-color: #d6cfc6; }
+
+/* Los enlaces se oscurecen al pasar el ratón; los botones con borde rojo
+   siguen rellenándose de rojo con el texto en blanco. */
+html[data-theme="light"] .hover\:text-white:not(.border-rojo):not(.btn-rojo):hover { color: #7d2530; }
+
+html[data-theme="light"] .card {
+    background-color: #ffffff;
+    border-color: #e7e1d9;
+}
+html[data-theme="light"] .tag {
+    background-color: #f1ede8;
+    color: #374151;
+}
+html[data-theme="light"] .card img { box-shadow: 0 0 0 1px #e7e1d9; }
+html[data-theme="light"] .chip.bg-gray-200 { box-shadow: inset 0 0 0 1px #cfc8be; }
+html[data-theme="light"] .badge-dev { color: #1f2937; }
+html[data-theme="light"] .theme-toggle {
+    background-color: #ffffff;
+    border-color: #e7e1d9;
+    color: #1f2937;
+}
+html[data-theme="light"] .theme-toggle:hover { border-color: #b23a48; }
+html[data-theme="light"] a:focus-visible,
+html[data-theme="light"] button:focus-visible { outline-color: #b23a48; }
