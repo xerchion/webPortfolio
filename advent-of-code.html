@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="stylesheet" href="assets/styles.css?v=5" />
 </head>
 <body class="bg-gray-900 text-white">
 <div class="container mx-auto px-6 py-8">
@@ -68,28 +68,34 @@
             <div class="bg-gray-800 rounded-lg p-6">
                 <p class="text-gray-300 mb-4">La técnica que usa cada solución. El nombre de cada reto enlaza a su enunciado.</p>
                 <div class="overflow-x-auto">
-                    <table class="tabla-retos text-sm text-gray-300">
+                    <table class="w-full table-fixed text-left text-sm text-gray-300" style="min-width: 38rem;">
+                        <colgroup>
+                            <col style="width: 3.5rem;"/>
+                            <col style="width: 11rem;"/>
+                            <col/>
+                            <col/>
+                        </colgroup>
                         <thead>
                             <tr>
-                                <th scope="col">Día</th>
-                                <th scope="col">Reto</th>
-                                <th scope="col">Parte 1</th>
-                                <th scope="col">Parte 2</th>
+                                <th scope="col" class="px-3 py-2 text-left font-semibold text-white border-b border-gray-600">Día</th>
+                                <th scope="col" class="px-3 py-2 text-left font-semibold text-white border-b border-gray-600">Reto</th>
+                                <th scope="col" class="px-3 py-2 text-left font-semibold text-white border-b border-gray-600">Parte 1</th>
+                                <th scope="col" class="px-3 py-2 text-left font-semibold text-white border-b border-gray-600">Parte 2</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>1</td><td><a href="https://adventofcode.com/2025/day/1" target="_blank" rel="noopener noreferrer">Secret Entrance</a></td><td>Aritmética modular</td><td>División entera para contar los pasos por cero</td></tr>
-                            <tr><td>2</td><td><a href="https://adventofcode.com/2025/day/2" target="_blank" rel="noopener noreferrer">Gift Shop</a></td><td>Comparación de las dos mitades de un número</td><td>Búsqueda de un patrón repetido en la cadena</td></tr>
-                            <tr><td>3</td><td><a href="https://adventofcode.com/2025/day/3" target="_blank" rel="noopener noreferrer">Lobby</a></td><td>El mayor dígito y el mayor de los que le siguen</td><td>Selección voraz con una pila</td></tr>
-                            <tr><td>4</td><td><a href="https://adventofcode.com/2025/day/4" target="_blank" rel="noopener noreferrer">Printing Department</a></td><td>Rejilla y recuento de los 8 vecinos</td><td>Simulación por rondas hasta que no hay cambios</td></tr>
-                            <tr><td>5</td><td><a href="https://adventofcode.com/2025/day/5" target="_blank" rel="noopener noreferrer">Cafeteria</a></td><td>Pertenencia a rangos</td><td>Ordenación y fusión de intervalos</td></tr>
-                            <tr><td>6</td><td><a href="https://adventofcode.com/2025/day/6" target="_blank" rel="noopener noreferrer">Trash Compactor</a></td><td>Operaciones por columnas</td><td>Lectura de la hoja en vertical, de derecha a izquierda</td></tr>
-                            <tr><td>7</td><td><a href="https://adventofcode.com/2025/day/7" target="_blank" rel="noopener noreferrer">Laboratories</a></td><td>Simulación fila a fila con conjuntos</td><td>Recuento de caminos acumulando por columna</td></tr>
-                            <tr><td>8</td><td><a href="https://adventofcode.com/2025/day/8" target="_blank" rel="noopener noreferrer">Playground</a></td><td>Union-Find sobre los pares más cercanos</td><td>Union-Find hasta que queda un solo grupo</td></tr>
-                            <tr><td>9</td><td><a href="https://adventofcode.com/2025/day/9" target="_blank" rel="noopener noreferrer">Movie Theater</a></td><td>Fuerza bruta sobre pares de puntos</td><td>Segmentos del polígono y trazado de rayos</td></tr>
-                            <tr><td>10</td><td><a href="https://adventofcode.com/2025/day/10" target="_blank" rel="noopener noreferrer">Factory</a></td><td>Fuerza bruta sobre combinaciones de botones</td><td>Eliminación de Gauss-Jordan y búsqueda sobre las variables libres</td></tr>
-                            <tr><td>11</td><td><a href="https://adventofcode.com/2025/day/11" target="_blank" rel="noopener noreferrer">Reactor</a></td><td>Búsqueda en profundidad con memoria</td><td>Producto de los caminos de cada tramo</td></tr>
-                            <tr><td>12</td><td><a href="https://adventofcode.com/2025/day/12" target="_blank" rel="noopener noreferrer">Christmas Tree Farm</a></td><td>Vuelta atrás con rotaciones y simetrías</td><td>—</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">1</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/1" target="_blank" rel="noopener noreferrer">Secret Entrance</a></td><td class="px-3 py-2 align-top">Aritmética modular</td><td class="px-3 py-2 align-top">División entera para contar los pasos por cero</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">2</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/2" target="_blank" rel="noopener noreferrer">Gift Shop</a></td><td class="px-3 py-2 align-top">Comparación de las dos mitades de un número</td><td class="px-3 py-2 align-top">Búsqueda de un patrón repetido en la cadena</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">3</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/3" target="_blank" rel="noopener noreferrer">Lobby</a></td><td class="px-3 py-2 align-top">El mayor dígito y el mayor de los que le siguen</td><td class="px-3 py-2 align-top">Selección voraz con una pila</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">4</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/4" target="_blank" rel="noopener noreferrer">Printing Department</a></td><td class="px-3 py-2 align-top">Rejilla y recuento de los 8 vecinos</td><td class="px-3 py-2 align-top">Simulación por rondas hasta que no hay cambios</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">5</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/5" target="_blank" rel="noopener noreferrer">Cafeteria</a></td><td class="px-3 py-2 align-top">Pertenencia a rangos</td><td class="px-3 py-2 align-top">Ordenación y fusión de intervalos</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">6</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/6" target="_blank" rel="noopener noreferrer">Trash Compactor</a></td><td class="px-3 py-2 align-top">Operaciones por columnas</td><td class="px-3 py-2 align-top">Lectura de la hoja en vertical, de derecha a izquierda</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">7</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/7" target="_blank" rel="noopener noreferrer">Laboratories</a></td><td class="px-3 py-2 align-top">Simulación fila a fila con conjuntos</td><td class="px-3 py-2 align-top">Recuento de caminos acumulando por columna</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">8</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/8" target="_blank" rel="noopener noreferrer">Playground</a></td><td class="px-3 py-2 align-top">Union-Find sobre los pares más cercanos</td><td class="px-3 py-2 align-top">Union-Find hasta que queda un solo grupo</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">9</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/9" target="_blank" rel="noopener noreferrer">Movie Theater</a></td><td class="px-3 py-2 align-top">Fuerza bruta sobre pares de puntos</td><td class="px-3 py-2 align-top">Segmentos del polígono y trazado de rayos</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">10</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/10" target="_blank" rel="noopener noreferrer">Factory</a></td><td class="px-3 py-2 align-top">Fuerza bruta sobre combinaciones de botones</td><td class="px-3 py-2 align-top">Eliminación de Gauss-Jordan y búsqueda sobre las variables libres</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">11</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/11" target="_blank" rel="noopener noreferrer">Reactor</a></td><td class="px-3 py-2 align-top">Búsqueda en profundidad con memoria</td><td class="px-3 py-2 align-top">Producto de los caminos de cada tramo</td></tr>
+                            <tr class="border-b border-gray-700"><td class="px-3 py-2 align-top">12</td><td class="px-3 py-2 align-top"><a class="text-rojo hover:text-white" href="https://adventofcode.com/2025/day/12" target="_blank" rel="noopener noreferrer">Christmas Tree Farm</a></td><td class="px-3 py-2 align-top">Vuelta atrás con rotaciones y simetrías</td><td class="px-3 py-2 align-top">—</td></tr>
                         </tbody>
                     </table>
                 </div>

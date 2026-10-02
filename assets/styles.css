@@ -75,36 +75,3 @@ button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
     .badge-dot { animation: none; }
 }
-
-/* Tabla de retos (Advent of Code) */
-.tabla-retos {
-    width: 100%;
-    min-width: 40rem;
-    border-collapse: collapse;
-}
-
-.tabla-retos th,
-.tabla-retos td {
-    text-align: left;
-    vertical-align: top;
-    padding: 0.6rem 0.75rem;
-    border-bottom: 1px solid #374151;
-}
-
-.tabla-retos th {
-    color: #fbeee6;
-    font-weight: 600;
-}
-
-.tabla-retos tbody tr:last-child td {
-    border-bottom: 0;
-}
-
-.tabla-retos a {
-    color: #e06c7a;
-    white-space: nowrap;
-}
-
-.tabla-retos a:hover {
-    color: #ffffff;
-}
