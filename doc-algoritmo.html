@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Asignación óptima de tareas · Documentación técnica · Sergio Ucedo</title>
-    <meta name="description" content="Documentación técnica del sistema de asignación óptima de tareas en Java mediante ramificación y poda: problema, algoritmo, arquitectura y ejemplo de uso."/>
+    <title>Asignación de tareas por ramificación y poda · Documentación técnica · Sergio Ucedo</title>
+    <meta name="description" content="Asignación de tareas en Java con ramificación y poda: el problema, cómo funciona el algoritmo, un ejemplo paso a paso, las pruebas y cómo ejecutarlo."/>
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"/>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -38,132 +38,167 @@
     <main class="mt-20">
         <section class="mt-12">
             <div class="bg-gray-800 rounded-lg p-8">
-                <h2 class="text-3xl font-bold text-rojo mb-6">Sistema de Asignación Óptima de Tareas</h2>
-                <p class="text-xl text-gray-300 mb-8">Explicación técnica, arquitectura y funcionamiento del sistema de optimización basado en ramificación y poda.</p>
+                <h1 class="text-3xl font-bold text-rojo mb-6">Asignación de tareas por ramificación y poda</h1>
+                <p class="text-xl text-gray-300 mb-8">Programa en Java que reparte <em>n</em> tareas entre <em>n</em> agentes con el menor coste total. Aquí explico el problema, cómo funciona el algoritmo y un ejemplo seguido paso a paso.</p>
 
                 <!-- Botones de acción -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <a href="index.html#work" class="bg-gray-700 hover:bg-gray-600 text-white px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center transition-colors w-full sm:w-auto justify-center">
-                        <i class="material-icons mr-2 text-sm sm:text-base">arrow_back</i>
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">arrow_back</i>
                         <span class="text-sm sm:text-base">Volver</span>
                     </a>
-                    <a href="https://github.com/xerchion/AT-RyP" target="_blank" rel="noopener noreferrer" class="btn-rojo px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center w-full sm:w-auto justify-center">
-                        <i class="material-icons mr-2 text-sm sm:text-base">code</i>
+                    <a href="https://github.com/xerchion/AsignacionTareas" target="_blank" rel="noopener noreferrer" class="btn-rojo px-4 sm:px-6 py-3 rounded-full text-base sm:text-lg font-semibold inline-flex items-center w-full sm:w-auto justify-center">
+                        <i class="material-icons mr-2 text-sm sm:text-base" aria-hidden="true">code</i>
                         <span class="text-sm sm:text-base">Código</span>
                     </a>
-
                 </div>
             </div>
         </section>
 
         <section class="mt-12">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Introducción y Propósito</h2>
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El problema</h2>
             <div class="bg-gray-800 rounded-lg p-6">
-                <p class="text-gray-300 mb-4">El <span class="text-rojo font-semibold">Sistema de Asignación Óptima de Tareas</span> es una aplicación Java que resuelve el problema clásico de asignación de tareas a agentes, minimizando el costo total mediante un algoritmo de <span class="text-rojo font-semibold">ramificación y poda</span> (branch-and-bound).</p>
-                <ul class="space-y-2 text-gray-300">
-                    <li><span class="text-rojo">•</span> <strong>Optimización:</strong> Encontrar la asignación de menor costo posible</li>
-                    <li><span class="text-rojo">•</span> <strong>Eficiencia:</strong> Resolver problemas de tamaño medio en tiempos razonables</li>
-                    <li><span class="text-rojo">•</span> <strong>Robustez:</strong> Manejo profesional de errores y validaciones</li>
-                    <li><span class="text-rojo">•</span> <strong>Trazabilidad:</strong> Logging detallado y estadísticas de rendimiento</li>
-                    <li><span class="text-rojo">•</span> <strong>Usabilidad:</strong> Interfaz simple tanto por archivo como interactiva</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="mt-12">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Descripción del Problema</h2>
-            <div class="bg-gray-800 rounded-lg p-6">
-                <p class="text-gray-300 mb-4">Dado <span class="text-rojo font-semibold">n agentes</span> y <span class="text-rojo font-semibold">n tareas</span> con una matriz de costos C[i][j], el objetivo es encontrar una asignación uno-a-uno que minimice el costo total.</p>
-                <div class="bg-gray-900 rounded-lg p-4 mt-4 overflow-x-auto">
-                    <pre class="text-xs sm:text-sm text-gray-300 whitespace-pre-wrap"><code>Agentes: [Trabajador1, Trabajador2, Trabajador3]
-Tareas:  [TareaA, TareaB, TareaC]
-
-Matriz de Costos:
-      TareaA TareaB TareaC
-Trab1   10     15     20
-Trab2   12     10     18
-Trab3   15     18     12
-
-Solución Óptima:
-- Trabajador1 → TareaA (costo: 10)
-- Trabajador2 → TareaB (costo: 10)
-- Trabajador3 → TareaC (costo: 12)
-COSTO TOTAL: 32</code></pre>
+                <p class="text-gray-300 mb-4">Hay <span class="text-rojo font-semibold"><em>n</em> agentes</span> y <span class="text-rojo font-semibold"><em>n</em> tareas</span>. Cada agente tarda un tiempo distinto en cada tarea, y hay que dar una tarea a cada agente de forma que la suma de tiempos sea la menor posible.</p>
+                <p class="text-gray-300 mb-4">Hay <em>n</em>! formas de repartirlas: 24 con 4 agentes y más de 3,6 millones con 10. Probarlas todas deja de ser viable enseguida.</p>
+                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-gray-900 rounded-lg p-4">
+                        <p class="text-xs text-gray-400 mb-2">Entrada</p>
+                        <pre class="text-sm text-gray-300"><code>4 4
+11 12 18 40
+14 15 13 22
+11 17 19 23
+17 14 20 28</code></pre>
+                    </div>
+                    <div class="bg-gray-900 rounded-lg p-4">
+                        <p class="text-xs text-gray-400 mb-2">Salida</p>
+                        <pre class="text-sm text-gray-300"><code>Resultado Óptimo
+ (agente/tarea)
+1 1
+4 2
+2 3
+3 4
+Coste total: 61</code></pre>
+                    </div>
                 </div>
+                <p class="text-gray-300 mt-4">La primera línea de la entrada da el número de agentes y de tareas; cada línea siguiente, los tiempos de un agente en cada tarea. La salida tiene una línea «agente tarea» por cada tarea y el coste total. Dar a cada agente la tarea de su mismo número costaría 73.</p>
             </div>
         </section>
 
         <section class="mt-12">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Algoritmo Implementado</h2>
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Cómo funciona</h2>
             <div class="bg-gray-800 rounded-lg p-6">
-                <h3 class="text-2xl font-semibold text-rojo mb-4">Ramificación y Poda (Branch and Bound)</h3>
+                <p class="text-gray-300 mb-4">El algoritmo construye las asignaciones tarea a tarea: primero decide quién hace la tarea 1, luego la 2, y así sucesivamente. Eso forma un árbol en el que cada nodo es una asignación parcial. En lugar de recorrerlo entero, calcula para cada nodo entre qué valores estará el coste de cualquier solución que salga de él, y descarta los nodos que ya no pueden mejorar lo que se tiene.</p>
                 <ul class="space-y-3 text-gray-300">
-                    <li><span class="text-rojo">•</span> <strong>Estructura del Árbol de Decisión:</strong> Se exploran todas las asignaciones posibles, podando ramas no óptimas.</li>
-                    <li><span class="text-rojo">•</span> <strong>Función de Cota:</strong> Calcula el coste mínimo posible para cada nodo parcial.</li>
-                    <li><span class="text-rojo">•</span> <strong>Estrategia de Poda:</strong> Si la cota de un nodo es mayor o igual al mejor coste conocido, se descarta esa rama.</li>
-                    <li><span class="text-rojo">•</span> <strong>Optimizaciones:</strong> Heap binario, precálculo de cotas, validaciones y poda anticipada.</li>
+                    <li><span class="text-rojo">•</span> <strong>Estimación optimista:</strong> el coste del nodo más, por cada tarea pendiente, el menor tiempo de esa tarea entre todos los agentes. Ninguna solución que salga del nodo puede costar menos.</li>
+                    <li><span class="text-rojo">•</span> <strong>Estimación pesimista:</strong> el coste del nodo más, por cada tarea pendiente, el mayor tiempo de esa tarea. Cualquier forma de completar el nodo cuesta como mucho eso.</li>
+                    <li><span class="text-rojo">•</span> <strong>Cota de poda:</strong> la menor estimación pesimista vista hasta el momento o, cuando ya hay una, el coste de la mejor solución completa. Todo nodo cuya estimación optimista supera la cota se descarta sin explorarlo.</li>
+                    <li><span class="text-rojo">•</span> <strong>Orden de exploración:</strong> los nodos pendientes esperan en un montículo de mínimos ordenado por estimación optimista, así que siempre se expande el más prometedor. Si dos empatan, va primero el que tiene más tareas asignadas.</li>
+                    <li><span class="text-rojo">•</span> <strong>Final:</strong> en cuanto el nodo que sale del montículo ya no puede mejorar la mejor solución, ninguno de los que quedan puede hacerlo y la búsqueda termina.</li>
                 </ul>
             </div>
         </section>
 
         <section class="mt-12">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Arquitectura y Componentes</h2>
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El ejemplo, paso a paso</h2>
             <div class="bg-gray-800 rounded-lg p-6">
-                <p class="text-gray-300 mb-4">El sistema sigue un patrón <span class="text-rojo font-semibold">Facade + Command + Observer</span> con separación clara de responsabilidades.</p>
-                <ul class="space-y-2 text-gray-300">
-                    <li><span class="text-rojo">•</span> <strong>TaskAssignmentSystem:</strong> Orquestador principal</li>
-                    <li><span class="text-rojo">•</span> <strong>Game:</strong> Motor del algoritmo</li>
-                    <li><span class="text-rojo">•</span> <strong>UserInterface:</strong> Interfaz de usuario</li>
-                    <li><span class="text-rojo">•</span> <strong>Heap, Node, GameData, Matrix, Vector, VectorB:</strong> Estructuras de datos especializadas</li>
-                </ul>
-            </div>
-        </section>
+                <p class="text-gray-300 mb-4">Con la matriz de arriba, los menores tiempos de cada tarea son 11, 12, 13 y 22, que suman 58: la estimación optimista de la raíz. Los mayores son 17, 17, 20 y 40, que suman 94: la cota inicial.</p>
+                <p class="text-gray-300 mb-4">Esta es la traza que escribe el programa con la opción <code class="font-mono text-sm">-t</code>. En <code class="font-mono text-sm whitespace-nowrap">agentes [3 1 - -]</code> el agente 3 hace la tarea 1, el agente 1 la tarea 2, y las tareas 3 y 4 están sin asignar.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>Nodo raíz: agentes [- - - -], coste 0, estimación optimista 58, cota 94
+Nodo añadido: agentes [1 - - -], coste 11, estimación optimista 58, cota 88
+Nodo añadido: agentes [2 - - -], coste 14, estimación optimista 61, cota 88
+Nodo añadido: agentes [3 - - -], coste 11, estimación optimista 58, cota 88
+Nodo añadido: agentes [4 - - -], coste 17, estimación optimista 64, cota 88
+Nodo añadido: agentes [1 2 - -], coste 26, estimación optimista 61, cota 86
+Nodo añadido: agentes [1 3 - -], coste 28, estimación optimista 63, cota 86
+Nodo añadido: agentes [1 4 - -], coste 25, estimación optimista 60, cota 85
+Nodo añadido: agentes [3 1 - -], coste 23, estimación optimista 58, cota 83
+Nodo añadido: agentes [3 2 - -], coste 26, estimación optimista 61, cota 83
+Nodo añadido: agentes [3 4 - -], coste 25, estimación optimista 60, cota 83
+Nodo añadido: agentes [3 1 2 -], coste 36, estimación optimista 58, cota 76
+Nodo añadido: agentes [3 1 4 -], coste 43, estimación optimista 65, cota 76
+Solución que mejora la anterior: agentes [3 1 2 4], coste 64, estimación optimista 64, cota 64
+Nodo podado: agentes [3 4 1 -], coste 43, estimación optimista 65, cota 64
+Nodo añadido: agentes [3 4 2 -], coste 38, estimación optimista 60, cota 64
+Solución descartada: agentes [3 4 2 1], coste 78, estimación optimista 78, cota 64
+Nodo añadido: agentes [1 4 2 -], coste 38, estimación optimista 60, cota 64
+Nodo podado: agentes [1 4 3 -], coste 44, estimación optimista 66, cota 64
+Solución que mejora la anterior: agentes [1 4 2 3], coste 61, estimación optimista 61, cota 61
+Nodo podado al extraerlo; fin de la búsqueda: agentes [3 2 - -], coste 26, estimación optimista 61, cota 61
 
-        <section class="mt-12">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Ejemplo de Uso</h2>
-            <div class="bg-gray-800 rounded-lg p-6">
-                <div class="bg-gray-900 rounded-lg p-4">
-                    <pre class="text-sm text-gray-300"><code>Entrada:
-3 3
-10 15 20
-12 10 18
-15 18 12
-
-Salida:
-Solución Óptima:
-1 → 1 (costo: 10)
-2 → 2 (costo: 10)
-3 → 3 (costo: 12)
-Costo Total: 32</code></pre>
+Resumen de la búsqueda:
+  Nodos generados: 20
+  Nodos expandidos: 9
+  Nodos podados: 9
+  Soluciones que mejoraron la anterior: 2
+  Coste óptimo: 61</code></pre>
                 </div>
+                <ol class="space-y-3 text-gray-300 mt-6">
+                    <li><span class="text-rojo font-semibold">1.</span> La raíz genera cuatro hijos, uno por cada agente que puede hacer la tarea 1. La cota baja de 94 a 88 porque el primer hijo garantiza una solución de 88 como mucho.</li>
+                    <li><span class="text-rojo font-semibold">2.</span> Se expanden los nodos de menor estimación. Al llegar a <code class="font-mono text-sm whitespace-nowrap">[3 1 2 4]</code> aparece la primera solución completa, de coste 64, y la cota baja a 64.</li>
+                    <li><span class="text-rojo font-semibold">3.</span> Con la cota en 64 se podan <code class="font-mono text-sm whitespace-nowrap">[3 4 1 -]</code> y <code class="font-mono text-sm whitespace-nowrap">[1 4 3 -]</code>, cuyas estimaciones optimistas son 65 y 66.</li>
+                    <li><span class="text-rojo font-semibold">4.</span> <code class="font-mono text-sm whitespace-nowrap">[1 4 2 3]</code> cuesta 61 y mejora la solución. La cota baja a 61.</li>
+                    <li><span class="text-rojo font-semibold">5.</span> El siguiente nodo del montículo tiene estimación optimista 61: ya no puede mejorar la solución, y los que quedan detrás tampoco. La búsqueda termina.</li>
+                </ol>
+                <p class="text-gray-300 mt-6">De las 24 asignaciones posibles, solo se han llegado a completar tres.</p>
             </div>
         </section>
 
         <section class="mt-12">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Características Técnicas</h2>
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">El código</h2>
             <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Es un programa de línea de comandos en <span class="text-rojo font-semibold">Java 11</span>, sin dependencias fuera de las de prueba. Las estructuras de datos están escritas a mano: el montículo, la matriz y los vectores. Nació como práctica de la asignatura Programación y Estructuras de Datos Avanzadas, en el Grado en Ingeniería Informática de la UNED.</p>
                 <ul class="space-y-2 text-gray-300">
-                    <li><span class="text-rojo">•</span> Logging y monitoreo detallado</li>
-                    <li><span class="text-rojo">•</span> Manejo de errores y validaciones exhaustivas</li>
-                    <li><span class="text-rojo">•</span> Optimizaciones de rendimiento y gestión de memoria</li>
-                    <li><span class="text-rojo">•</span> Compatibilidad y cobertura de tests</li>
+                    <li><span class="text-rojo">•</span> <strong>Game:</strong> el algoritmo de ramificación y poda.</li>
+                    <li><span class="text-rojo">•</span> <strong>Node:</strong> nodo del árbol, con la asignación parcial, su coste y su estimación optimista.</li>
+                    <li><span class="text-rojo">•</span> <strong>Heap:</strong> montículo binario de mínimos, genérico.</li>
+                    <li><span class="text-rojo">•</span> <strong>GameData:</strong> datos del problema: matriz de tiempos, agentes y tareas.</li>
+                    <li><span class="text-rojo">•</span> <strong>Matrix, Vector, VectorB:</strong> matriz y vectores con índices desde 1.</li>
+                    <li><span class="text-rojo">•</span> <strong>TaskAssignmentSystem:</strong> coordina la ejecución: carga de datos, algoritmo, resultados y errores.</li>
+                    <li><span class="text-rojo">•</span> <strong>UserInterface, ArgsHandler, FileController:</strong> argumentos, entrada por teclado, lectura y escritura de ficheros.</li>
                 </ul>
             </div>
         </section>
 
         <section class="mt-12">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Conclusiones</h2>
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Pruebas</h2>
             <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Hay más de 50 pruebas con <span class="text-rojo font-semibold">JUnit 5</span> y <span class="text-rojo font-semibold">jqwik</span>, una biblioteca de pruebas basadas en propiedades.</p>
+                <p class="text-gray-300 mb-4">Las más importantes comprueban el resultado del algoritmo contra una búsqueda por fuerza bruta. En cada ejecución se generan 1.000 matrices aleatorias de hasta 7×7, la mitad con muchos costes repetidos para forzar empates, y el coste devuelto tiene que coincidir con el mínimo real.</p>
+                <p class="text-gray-300">Las pruebas se ejecutan también en GitHub Actions con cada cambio.</p>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Cómo ejecutarlo</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">Hace falta Java 11 o superior y Maven.</p>
+                <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                    <pre class="text-xs sm:text-sm text-gray-300"><code>mvn compile
+java -cp target/classes tareas ejemplos/ejemplo-4x4.txt
+
+mvn test</code></pre>
+                </div>
+                <p class="text-gray-300 mt-6 mb-4">Sintaxis: <code class="font-mono text-sm">tareas [-t] [-h] [fichero entrada] [fichero salida]</code></p>
                 <ul class="space-y-2 text-gray-300">
-                    <li><span class="text-rojo">•</span> Algoritmo robusto y eficiente</li>
-                    <li><span class="text-rojo">•</span> Arquitectura profesional y mantenible</li>
-                    <li><span class="text-rojo">•</span> Rendimiento excelente para problemas prácticos</li>
-                    <li><span class="text-rojo">•</span> Escalabilidad limitada para problemas muy grandes</li>
+                    <li><span class="text-rojo">•</span> <strong>-t:</strong> añade la traza del algoritmo.</li>
+                    <li><span class="text-rojo">•</span> <strong>-h:</strong> muestra la ayuda.</li>
+                    <li><span class="text-rojo">•</span> <strong>fichero entrada:</strong> si se omite, los datos se piden por teclado.</li>
+                    <li><span class="text-rojo">•</span> <strong>fichero salida:</strong> si se omite, el resultado se muestra por pantalla.</li>
                 </ul>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl sm:text-4xl font-bold mb-8">Límites</h2>
+            <div class="bg-gray-800 rounded-lg p-6">
+                <p class="text-gray-300 mb-4">El problema de asignación se puede resolver en tiempo polinómico con el algoritmo húngaro. Este proyecto no pretende competir con él: es un ejercicio de la técnica de ramificación y poda, cuyo coste en el peor caso es factorial.</p>
+                <p class="text-gray-300">Como orden de magnitud, con tiempos aleatorios entre 1 y 100 un problema de 14×14 se resuelve en décimas de segundo y uno de 20×20 en pocos segundos. A partir de ahí el tiempo y la memoria crecen deprisa.</p>
             </div>
         </section>
 
         <div class="mt-12 text-center">
+            <a href="index.html#work" class="text-rojo hover:text-white">← Volver a los proyectos</a>
         </div>
     </main>
 </div>
